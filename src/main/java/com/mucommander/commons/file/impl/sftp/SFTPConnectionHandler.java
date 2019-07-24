@@ -102,7 +102,7 @@ class SFTPConnectionHandler extends ConnectionHandler {
             // Some SSH servers support the 'password' auth method (e.g. OpenSSH on Debian unstable), some don't
             // and only support the 'keyboard-interactive' method.
             List<String> authMethods = new ArrayList<>(Arrays.asList(sshClient.getAuthenticationMethods(credentials.getLogin())));
-            LOGGER.info("getAvailableAuthMethods()={}", sshClient.getAuthenticationMethods(credentials.getLogin()));
+//            LOGGER.info("getAvailableAuthMethods()={}", sshClient.getAuthenticationMethods(credentials.getLogin())); // TODO Kousalik commented to compile
 
             SshAuthentication authClient = null;
             String privateKeyPath = realm.getProperty(SFTPFile.PRIVATE_KEY_PATH_PROPERTY_NAME);

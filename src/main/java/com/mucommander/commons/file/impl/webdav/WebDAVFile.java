@@ -4,32 +4,19 @@ import com.github.sardine.DavResource;
 import com.github.sardine.Sardine;
 import com.github.sardine.SardineFactory;
 import com.github.sardine.impl.SardineException;
-import com.mucommander.commons.file.AbstractFile;
-import com.mucommander.commons.file.FileFactory;
-import com.mucommander.commons.file.FileOperation;
-import com.mucommander.commons.file.FilePermissions;
-import com.mucommander.commons.file.FileURL;
-import com.mucommander.commons.file.PermissionBits;
-import com.mucommander.commons.file.ProtocolFile;
-import com.mucommander.commons.file.SimpleFilePermissions;
-import com.mucommander.commons.file.UnsupportedFileOperation;
-import com.mucommander.commons.file.UnsupportedFileOperationException;
+import com.mucommander.commons.file.*;
 import com.mucommander.commons.io.RandomAccessInputStream;
 import com.mucommander.commons.io.RandomAccessOutputStream;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Mathias
- */
 public class WebDAVFile extends ProtocolFile {
 
     private final Sardine sardine = SardineFactory.begin();

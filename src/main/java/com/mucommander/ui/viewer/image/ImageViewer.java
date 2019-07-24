@@ -1,52 +1,12 @@
-/*
- * This file is part of muCommander, http://www.mucommander.com
- * Copyright (C) 2002-2012 Maxence Bernard
- *
- * muCommander is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 3 of the License, or
- * (at your option) any later version.
- *
- * muCommander is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
-
 package com.mucommander.ui.viewer.image;
-
-import java.awt.*;
-import java.awt.event.*;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
-
-import javax.imageio.ImageIO;
-import javax.imageio.spi.IIORegistry;
-import javax.swing.*;
 
 import com.mucommander.commons.file.AbstractFile;
 import com.mucommander.commons.runtime.OsFamily;
 import com.mucommander.conf.MuSnapshot;
-import com.mucommander.utils.text.Translator;
 import com.mucommander.ui.dialog.InformationDialog;
 import com.mucommander.ui.helper.MenuToolkit;
 import com.mucommander.ui.helper.MnemonicHelper;
-import com.mucommander.ui.theme.ColorChangedEvent;
-import com.mucommander.ui.theme.FontChangedEvent;
-import com.mucommander.ui.theme.Theme;
-import com.mucommander.ui.theme.ThemeListener;
-import com.mucommander.ui.theme.ThemeManager;
+import com.mucommander.ui.theme.*;
 import com.mucommander.ui.viewer.FileFrame;
 import com.mucommander.ui.viewer.FileViewer;
 import net.sf.image4j.codec.ico.ICODecoder;
@@ -60,6 +20,21 @@ import org.apache.sanselan.formats.pnm.PNMImageParser;
 import org.apache.sanselan.formats.psd.PsdImageParser;
 import org.apache.sanselan.formats.tiff.TiffImageParser;
 import ru.trolsoft.ui.TMenuSeparator;
+
+import javax.imageio.ImageIO;
+import javax.imageio.spi.IIORegistry;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 //import org.apache.commons.imaging.Imaging;
 

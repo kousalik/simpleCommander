@@ -1,21 +1,3 @@
-/*
- * This file is part of muCommander, http://www.mucommander.com
- * Copyright (C) 2002-2012 Maxence Bernard
- *
- * muCommander is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 3 of the License, or
- * (at your option) any later version.
- *
- * muCommander is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 package com.mucommander;
 
 import com.mucommander.auth.CredentialsManager;
@@ -74,25 +56,33 @@ import java.util.concurrent.*;
  * @author Maxence Bernard, Nicolas Rinaudo, Oleg Trifonov
  */
 public class TrolCommander {
-	private static Logger logger;
+    private static Logger logger;
 
     // - Class fields -----------------------------------------------------------
     // --------------------------------------------------------------------------
-    private static SplashScreen  splashScreen;
-    /** Whether or not to display the splash screen. */
+    private static SplashScreen splashScreen;
+    /**
+     * Whether or not to display the splash screen.
+     */
     private static boolean useSplash;
-    /** true while the application is launching, false after it has finished launching */
+    /**
+     * true while the application is launching, false after it has finished launching
+     */
     private static boolean isLaunching = true;
-    /** Launch lock. */
+    /**
+     * Launch lock.
+     */
     private static final Object LAUNCH_LOCK = new Object();
 
 
     // - Initialisation ---------------------------------------------------------
     // --------------------------------------------------------------------------
+
     /**
      * Prevents initialisation of the <code>Launcher</code>.
      */
-    private TrolCommander() {}
+    private TrolCommander() {
+    }
 
 
     /**
@@ -101,8 +91,8 @@ public class TrolCommander {
      * This method will return immediately if the application has already been launched when it is called.
      */
     public static void waitUntilLaunched() {
-        getLogger().debug("called, thread="+Thread.currentThread());
-        synchronized(LAUNCH_LOCK) {
+        getLogger().debug("called, thread=" + Thread.currentThread());
+        synchronized (LAUNCH_LOCK) {
             while (isLaunching) {
                 try {
                     getLogger().debug("waiting");
@@ -113,8 +103,6 @@ public class TrolCommander {
             }
         }
     }
-
-
 
 
     /**
@@ -130,8 +118,10 @@ public class TrolCommander {
 
     // - Boot code --------------------------------------------------------------
     // --------------------------------------------------------------------------
+
     /**
      * Method used to migrate commands that used to be defined in the configuration but were moved to <code>commands.xml</code>.
+     *
      * @param useName     name of the <code>use custom command</code> configuration variable.
      * @param commandName name of the <code>custom command</code> configuration variable.
      */
@@ -236,14 +226,14 @@ public class TrolCommander {
             // were stored as preferences so when loading such preferences they could overload snapshot properties
             try {
                 MuConfigurations.loadSnapshot();
-            } catch(Exception e) {
+            } catch (Exception e) {
                 helper.printFileError("Could not load snapshot", e);
             }
             // Configuration needs to be loaded before any sort of GUI creation is performed : under Mac OS X, if we're
             // to use the metal look, we need to know about it right about now.
             try {
                 MuConfigurations.loadPreferences();
-            } catch(Exception e) {
+            } catch (Exception e) {
                 helper.printFileError("Could not load configuration", e);
             }
 
@@ -274,7 +264,7 @@ public class TrolCommander {
             printStartupMessage("Loading actions shortcuts...");
             try {
                 ActionKeymapIO.loadActionKeymap();
-            } catch(Exception e) {
+            } catch (Exception e) {
                 e.printStackTrace();
                 helper.printFileError("Could not load actions shortcuts", e);
             }
@@ -283,7 +273,7 @@ public class TrolCommander {
             printStartupMessage("Loading toolbar description...");
             try {
                 ToolBarIO.loadDescriptionFile();
-            } catch(Exception e) {
+            } catch (Exception e) {
                 e.printStackTrace();
                 helper.printFileError("Could not load toolbar description", e);
             }
@@ -292,7 +282,7 @@ public class TrolCommander {
             printStartupMessage("Loading command bar description...");
             try {
                 CommandBarIO.loadCommandBar();
-            } catch(Exception e) {
+            } catch (Exception e) {
                 e.printStackTrace();
                 helper.printFileError("Could not load commandbar description", e);
             }
@@ -407,7 +397,7 @@ public class TrolCommander {
             try {
                 boolean install = !MuConfigurations.isPreferencesFileExists();
                 com.mucommander.desktop.DesktopManager.init(install);
-            } catch(Exception e) {
+            } catch (Exception e) {
                 helper.printError("Could not initialize desktop", e, true);
             }
         }
@@ -425,7 +415,7 @@ public class TrolCommander {
                 Class<?> osxIntegrationClass = Class.forName("com.mucommander.ui.macosx.OSXIntegration");
                 Constructor<?> constructor = osxIntegrationClass.getConstructor();
                 constructor.newInstance();
-            } catch(Exception e) {
+            } catch (Exception e) {
                 getLogger().debug("Exception thrown while initializing Mac OS X integration", e);
             }
         }
@@ -457,7 +447,7 @@ public class TrolCommander {
                 ExtensionManager.init();
                 Profiler.stop("init-extensions-manager");
                 ExtensionManager.addExtensionsToClasspath();
-            } catch(Exception e) {
+            } catch (Exception e) {
                 getLogger().debug("Failed to add extensions to the classpath", e);
             }
 
@@ -552,7 +542,7 @@ public class TrolCommander {
             printStartupMessage("Loading file associations...");
             try {
                 com.mucommander.command.CommandManager.loadCommands();
-            } catch(Exception e) {
+            } catch (Exception e) {
                 helper.printFileError("Could not load custom commands", e);
             }
 
@@ -561,7 +551,7 @@ public class TrolCommander {
             migrateCommand("editor.use_custom", "editor.custom_command", CommandManager.EDITOR_ALIAS);
             try {
                 CommandManager.writeCommands();
-            } catch(Exception e) {
+            } catch (Exception e) {
                 System.out.println("###############################");
                 getLogger().debug("Caught exception", e);
                 // There's really nothing we can do about this...
@@ -569,7 +559,7 @@ public class TrolCommander {
 
             try {
                 CommandManager.loadAssociations();
-            } catch(Exception e) {
+            } catch (Exception e) {
                 helper.printFileError("Could not load custom associations", e);
             }
 
@@ -587,7 +577,7 @@ public class TrolCommander {
             printStartupMessage("Loading bookmarks...");
             try {
                 com.mucommander.bookmark.BookmarkManager.loadBookmarks();
-            } catch(Exception e) {
+            } catch (Exception e) {
                 helper.printFileError("Could not load bookmarks", e);
             }
         }
@@ -604,7 +594,7 @@ public class TrolCommander {
             printStartupMessage("Loading credentials...");
             try {
                 CredentialsManager.loadCredentials();
-            } catch(Exception e) {
+            } catch (Exception e) {
                 helper.printFileError("Could not load credentials", e);
             }
         }
@@ -648,7 +638,7 @@ public class TrolCommander {
             printStartupMessage("Loading shell history...");
             try {
                 ShellHistoryManager.loadHistory();
-            } catch(Exception e) {
+            } catch (Exception e) {
                 helper.printFileError("Could not load shell history", e);
             }
         }
@@ -752,7 +742,7 @@ public class TrolCommander {
 
         public boolean isFull() {
             if (runningTasks.size() < cores) {
-                return  false;
+                return false;
             }
             for (LauncherTask t : runningTasks) {
                 if (t.isDone()) {
@@ -777,16 +767,18 @@ public class TrolCommander {
             return false;
         }
     }
+
     /**
      * Main method used to startup muCommander.
+     *
      * @param args command line arguments.
      */
     //@SuppressWarnings({"unchecked"})
     public static void main(String args[]) {
         if (OsFamily.MAC_OS_X.isCurrent()) {
             System.setProperty("com.apple.mrj.application.apple.menu.about.name", "trolCommander");
-			// disable openGL in javaFX (used for HtmlViewer) as it cashes JVM under vmWare
-			System.setProperty("prism.order", "sw");
+            // disable openGL in javaFX (used for HtmlViewer) as it cashes JVM under vmWare
+            System.setProperty("prism.order", "sw");
         }
 
         Profiler.start("init");
@@ -872,7 +864,7 @@ public class TrolCommander {
             tasks.add(taskLoadEnvironment);
 //System.out.println("Execute tasks");
 
-            if (processors <= 1 ) {
+            if (processors <= 1) {
                 for (LauncherTask t : tasks) {
                     t.run();
                 }
@@ -880,7 +872,7 @@ public class TrolCommander {
                 while (!tasks.isEmpty()) {
                     // execute tasks with ready dependencies
                     for (LauncherTask task : tasks) {
-                        if (executor.execute(task, false) ) {
+                        if (executor.execute(task, false)) {
                             tasks.remove(task);
                             break;
                         }
@@ -895,7 +887,7 @@ public class TrolCommander {
                     } else {
                         boolean found = false;
                         for (LauncherTask task : tasks) {
-                            if (executor.execute(task, false) ) {
+                            if (executor.execute(task, false)) {
                                 tasks.remove(task);
                                 found = true;
                                 break;
@@ -918,14 +910,14 @@ public class TrolCommander {
             }
             executor.shutdown();
             System.out.println("finished");
-        } catch(Throwable t) {
+        } catch (Throwable t) {
             // Startup failed, dispose the splash screen
             if (splashScreen != null) {
                 splashScreen.dispose();
             }
 
             getLogger().error("Startup failed", t);
-            
+
             // Display an error dialog with a proper message and error details
             InformationDialog.showErrorDialog(null, null, Translator.get("startup_error"), null, t);
 
@@ -944,7 +936,7 @@ public class TrolCommander {
         // Done launching, wake up threads waiting for the application being launched.
         // Important: this must be done before disposing the splash screen, as this would otherwise create a deadlock
         // if the AWT event thread were waiting in #waitUntilLaunched .
-        synchronized(LAUNCH_LOCK) {
+        synchronized (LAUNCH_LOCK) {
             isLaunching = false;
             LAUNCH_LOCK.notifyAll();
         }
