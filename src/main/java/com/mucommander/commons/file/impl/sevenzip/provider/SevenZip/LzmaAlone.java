@@ -143,7 +143,7 @@ public class LzmaAlone
 				);
 	}
 	
-	public static void main(String[] args) throws Exception
+	/*public static void main(String[] args) throws Exception
 	{
 		System.out.println("\nLZMA (Java) 4.42 Copyright (c) 1999-2006 Igor Pavlov  2006-05-15\n");
 		
@@ -230,5 +230,5 @@ public class LzmaAlone
 		}
 		else
 			throw new Exception("Incorrect command");
-	}
+	}*/
 }

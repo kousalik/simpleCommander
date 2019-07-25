@@ -115,7 +115,7 @@ public class J7zip {
         }
     }
     
-    public static void main(String[] args) throws Exception {
+    /*public static void main(String[] args) throws Exception {
         System.out.println("\nJ7zip 4.43 ALPHA 2 (" + Runtime.getRuntime().availableProcessors() + " CPUs)");
         
         if (args.length < 2) {
@@ -172,5 +172,5 @@ public class J7zip {
         }
         
         archive.close();
-    }
+    }*/
 }

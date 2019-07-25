@@ -305,7 +305,7 @@ public class KeyboardShortcutChooser extends JPanel implements ItemListener, Com
 
 
 
-    public static void main(String args[]) {
+   /* public static void main(String args[]) {
         Translator.init();
 
         JFrame frame = new JFrame();
@@ -316,6 +316,6 @@ public class KeyboardShortcutChooser extends JPanel implements ItemListener, Com
 //        Dimension d = frame.getSize();
 //        frame.setSize(new Dimension(d.width+200, d.height));
         frame.setVisible(true);
-    }
+    }*/
 
 }

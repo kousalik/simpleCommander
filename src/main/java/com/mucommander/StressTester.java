@@ -110,7 +110,7 @@ public class StressTester implements Runnable, ActionListener {
      * Method used to start the stress tester.
      * @param args command line arguments.
      */
-    public static void main(String args[]) {
+    /*public static void main(String args[]) {
         TrolCommander.main(args);
 
         StressTester instance = new StressTester();
@@ -121,5 +121,5 @@ public class StressTester implements Runnable, ActionListener {
         stopDialog.getContentPane().add(stopButton);
         stopDialog.setSize(new Dimension(80, 60));
         stopDialog.setVisible(true);
-    }
+    }*/
 }

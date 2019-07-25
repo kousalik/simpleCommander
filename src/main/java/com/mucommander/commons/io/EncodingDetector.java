@@ -221,10 +221,10 @@ public class EncodingDetector {
      * Lists all detectable encodings as returned by {@link #getDetectableEncodings()} to the standard output.
      * @param args command line arguments.
      */
-    public static void main(String args[]) {
+  /*  public static void main(String args[]) {
         String encodings[] = getDetectableEncodings();
 
         for (String encoding : encodings)
             System.out.println(encoding);
-    }
+    }*/
 }

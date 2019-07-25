@@ -37,6 +37,7 @@ public class CommandlineInterpreter {
 			e.printStackTrace();
 		}
 	}
+/*
 
 	public static void main(String[] args) {
 		if (args.length != 1) {
@@ -45,6 +46,7 @@ public class CommandlineInterpreter {
 			calculateExpression(args[0]);
 		}
 	}
+*/
 
 	private static void printUsage() {
         System.err.println("Commandline Expression Parser\n\n" + "Example: " + "\n" + "java -jar exp4j.jar \"2.12 * log(23) * (12 - 4)\"\n\n" + "written by fas@congrace.de");

@@ -1,20 +1,3 @@
-/*
- * This file is part of trolCommander, http://www.trolsoft.ru/en/soft/trolcommander
- * Copyright (C) 2013-2016 Oleg Trifonov
- *
- * trolCommander is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 3 of the License, or
- * (at your option) any later version.
- *
- * trolCommander is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
- */
 package com.mucommander.commons.file.impl.avrdude;
 
 import com.mucommander.command.Command;
@@ -27,10 +10,6 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author Oleg Trifonov
- * Created on 21/04/16.
- */
 public class Avrdude {
 
     enum Status {
@@ -267,12 +246,12 @@ System.out.println("--------- ");
 
 
 
-    public static void main(String args[]) throws IOException {
+    /*public static void main(String args[]) throws IOException {
         AvrdudeConfiguration config = new AvrdudeConfiguration("m8", null, null, null, "usbasp", true, null, null, true, false, null,
                 "/Users/trol/-avrdude/avrdude-6.3/avrdude");
         //OutputStream os = new FileOutputStream("/Users/trol/--------.bin");//System.out;
 
-/*
+*//*
         AvrDudeInputStream is = new AvrDudeInputStream(StreamType.HEX, config, Operation.READ_FLASH);
         new Thread() {
             int lastProgress = -1;
@@ -295,7 +274,7 @@ System.out.println("--------- ");
             }
         }.start();
         StreamUtils.copyStream(is, new FileOutputStream(new File("/Users/trol/--------.hex")));
-*/
+*//*
 
 
         AvrdudeOutputStream os = new AvrdudeOutputStream(StreamType.HEX, config, Operation.WRITE_FLASH);
@@ -324,7 +303,7 @@ System.out.println("--------- ");
 
 
 
-/*
+*//*
         Avrdude avrdude = new Avrdude();
         avrdude.execute(config, Operation.READ_FLASH, StreamType.HEX);
         new Thread() {
@@ -349,8 +328,8 @@ System.out.println("--------- ");
                 System.out.println(avrdude.getHexOutput());
             }
         }.start();
-*/
-    }
+*//*
+    }*/
 
 
 }
